@@ -1,4 +1,4 @@
-package main
+package day02
 
 import (
 	"bufio"
@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-func main() {
-	input, err := os.Open(os.Args[1])
+func Day2(filepath string) {
+	input, err := os.Open(filepath)
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
