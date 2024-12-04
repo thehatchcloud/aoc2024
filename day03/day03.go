@@ -1,4 +1,4 @@
-package main
+package day03
 
 import (
 	"fmt"
@@ -7,35 +7,37 @@ import (
 	"strconv"
 )
 
-func main() {
+func Day3(filepath string, conditionals bool) {
 
-	f, err := os.ReadFile(os.Args[1])
+	f, err := os.ReadFile(filepath)
 	if err != nil {
 		fmt.Println(fmt.Errorf("error opening file: %v", err))
 	}
 
-	res := findMultiplicationsWithCond(string(f))
-	fmt.Println(res)
-	// res := findMultiplications(string(f))
+	var res [][]string
+	if conditionals {
+		fmt.Println("Calculating with conditionals")
+		res = findMultiplicationsWithCond(string(f))
+	} else {
+		fmt.Println("Calculating without conditionals")
+		res = findMultiplications(string(f))
+	}
 	total := 0
 	enabled := true
 	for _, v := range res {
 		if v[0] == "don't()" {
-			// fmt.Println("-- disabling multiplication")
 			enabled = false
 			continue
 		} else if v[0] == "do()" {
-			// fmt.Println("-- enabling mutliplication")
 			enabled = true
 			continue
 		}
-		if enabled {
 
+		if enabled {
 			ans, err := multiply(v[0])
 			if err != nil {
 				fmt.Println("error multiplying", err)
 			}
-			// fmt.Println(ans)
 			total = total + ans
 		}
 	}
