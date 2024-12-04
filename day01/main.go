@@ -9,13 +9,10 @@ import (
 	"strconv"
 )
 
-// Create a list (slice) from each column
-// Sort each list
-// Get the distance (difference) between each list
-// Add all of the distances up to get the total distance
-
 func main() {
-	lineOne, lineTwo, err := getTwoSlices("input.txt")
+	filepath := os.Args[1]
+	fmt.Println(filepath)
+	lineOne, lineTwo, err := getTwoSlices(filepath)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -29,14 +26,12 @@ func main() {
 
 	total := 0
 	for i := range lineOne {
-		// fmt.Printf("line %v: %v,%v\n", i+1, lineOne[i], lineTwo[i])
 		var lineTotal int
 		if lineOne[i] > lineTwo[i] {
 			lineTotal = lineOne[i] - lineTwo[i]
 		} else {
 			lineTotal = lineTwo[i] - lineOne[i]
 		}
-		// fmt.Println("lineTotal:", lineTotal)
 		total = total + lineTotal
 	}
 	fmt.Println("Total:", total)
