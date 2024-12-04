@@ -1,4 +1,4 @@
-package main
+package day01
 
 import (
 	"bufio"
@@ -9,8 +9,8 @@ import (
 	"strconv"
 )
 
-func main() {
-	filepath := os.Args[1]
+func Day1(filepath string) {
+	// filepath := os.Args[1]
 	fmt.Println(filepath)
 	lineOne, lineTwo, err := getTwoSlices(filepath)
 	if err != nil {
