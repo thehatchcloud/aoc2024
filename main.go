@@ -20,9 +20,12 @@ func main() {
 		day02.Day2(os.Args[2])
 
 	case "day-three":
-		fmt.Printf("Day 03 - Cleaning multipliers for %v %v\n", os.Args[2], os.Args[3])
-		if os.Args[3] == "conditionals" {
-			day03.Day3(os.Args[2], true)
+		fmt.Printf("Day 03 - Cleaning multipliers for %v\n", os.Args[2])
+		if len(os.Args) == 4 {
+			fmt.Println(os.Args)
+			if os.Args[3] == "conditionals" {
+				day03.Day3(os.Args[2], true)
+			}
 		} else {
 			day03.Day3(os.Args[2], false)
 		}
